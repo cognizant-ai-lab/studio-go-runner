@@ -365,18 +365,7 @@ The next section instructions, give a summary of what needs to be done in order 
 
 Code is scanned using github actions as pull requests are generated.
 
-At this time scanning includes:
-
-. semgrep which is a semantic rules checking engine that supports Go and can perform rules based checking using the abstract syntax tree
-. Shiftleft scan which is a metalinter and source checking tool handling CVE's, CWE's and some additional Go specific checking using static check
-. CodeQL originally a Microsoft project is now a community project and well support on github.  Currently a local version is not used and instead branch based development and pushing to github is the best option for this scanner.
-
-To run code checks your self you can use the following commands:
-
-```
-docker run --rm -v "${PWD}:/src" returntocorp/semgrep --lang go --config=p/ci --exclude=vendor
-docker run --rm -e "WORKSPACE=$(pwd)" -e GITHUB_TOKEN -e "SCAN_AUTO_BUILD=true" -v "$(pwd):/app" shiftleft/scan scan $*
-```
+At this time scanning uses CodeQL, originally a Microsoft project and now a community project that is well supported on github.  Currently a local version is not used and instead branch based development and pushing to github is the best option for this scanner.
 
 ## Internet based registra build images
 
